@@ -1,0 +1,41 @@
+/* Add this in your global styles or a separate CSS file */
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-10px); /* Jump up */
+    }
+    50% {
+        transform: translateY(0);
+    }
+    70% {
+        transform: translateY(-5px); /* Small bounce */
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.banner img {
+    animation: jump 2s infinite ease-in-out;
+}
+/* Add this in your global styles or a separate CSS file */
+@keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* Apply the animation to the gradient text */
+  .animate-gradient-text {
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+  }
+  
