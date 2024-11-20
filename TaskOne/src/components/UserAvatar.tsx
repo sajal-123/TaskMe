@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect, useRef } from 'react';
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react';
 import { getInitials } from '../utils';
 import { FaUser } from 'react-icons/fa';
+import { IoMdLogOut } from "react-icons/io";
 
 function UserAvatar() {
   const [isShowing, setIsShowing] = useState(false);
@@ -77,7 +78,7 @@ function UserAvatar() {
                     active ? 'bg-blue-500 text-red-900' : 'text-red-500'
                   } group flex rounded-md items-center w-full px-4 py-2 text-sm`}
                 >
-                  <FaUser className="mr-2" aria-hidden="true" />
+                  <IoMdLogOut className="mr-2" aria-hidden="true" />
                   Logout
                 </button>
               )}
