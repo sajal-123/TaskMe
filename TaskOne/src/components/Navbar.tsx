@@ -12,7 +12,7 @@ function Navbar() {
 
 
   return (
-    <div className='w-full gap-2 bg-gray-300 h-16 flex justify-between items-center py-2 px-4 2xl:py-4'>
+    <div className='w-full gap-2 bg-gray-100 h-16 flex justify-between items-center py-2 px-4 2xl:py-4'>
       {/* Search Section */}
       <div className='flex gap-2 items-center'>
         <button className=' md:hidden' onClick={() => {

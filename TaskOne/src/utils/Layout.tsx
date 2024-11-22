@@ -9,19 +9,17 @@ const Layout: React.FC = () => {
 
     return (
         <div className=" w-full h-screen flex flex-col md:flex-row">
-            <div className=" w-1/5 h-screen bg-white sticky top-0 hidden md:block">
+            <div className=" w-1/5 h-screen sticky top-0 hidden md:block">
                 {/* Sidebar */}
                 <SideBar/>
             </div>
 
             <MobileSidebar/>
-            <div className=" flex-1 oevrflow-y-auto">
+            <div className=" flex-1 oevrflow-y-hidden bg-gray-400">
 
                 {/* Side Navbar */}
                 <Navbar/>
-
-
-                <div className="p-4 2xl:px-10">
+                <div className="p-4 2xl:px-10 overflow-y-auto">
                     <Outlet />
                 </div>
             </div>

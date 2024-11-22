@@ -37,7 +37,7 @@ function SideBar() {
   };
 
   return (
-    <div className="w-full h-screen flex flex-col gap-6 p-5 bg-gray-100">
+    <div className="w-full h-screen sticky top-0 left-0 flex flex-col gap-6 p-5 bg-gray-100">
       {/* Header */}
       <h1 className="flex gap-2 items-center text-lg font-semibold">
         <span className="bg-blue-600 p-2 rounded-full text-white">

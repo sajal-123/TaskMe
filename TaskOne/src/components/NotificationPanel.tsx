@@ -35,7 +35,7 @@ const NotificationPanel: React.FC = () => {
             {/* Notification Bell Icon */}
             <PopoverButton className="inline-block items-center outline-none">
                 <div className="h-10 w-10 flex items-center justify-center text-gray-500 dark:text-white relative">
-                    <IoIosNotificationsOutline className="text-2xl" />
+                    <IoIosNotificationsOutline className="text-2xl text-black" />
                     {notificationCount > 0 && (
                         <span className="absolute text-center top-0 right-0 text-sm font-semibold w-4 h-4 rounded-full bg-red-500 text-white flex items-center justify-center">
                             {notificationCount}
