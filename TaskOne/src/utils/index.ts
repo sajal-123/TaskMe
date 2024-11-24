@@ -4,14 +4,14 @@ export function getInitials(fullName: string): string {
   return initials;
 }
 export const PROTOTYPES = {
-  high: "text-red-500",
-  medium: "text-yellow-500",
-  normal: "text-blue-500",
+  "high": "text-red-500",
+  "medium": "text-yellow-500",
+  "normal": "text-blue-500",
 }
 export const TASK_TYPES = {
-  todo: "bg-blue-500",
-  "in progress": "bg-yellow-500",
-  completed: "bg-green-500",
+  "todo": "bg-blue-500",
+  "in-progress": "bg-yellow-500",
+  "completed": "bg-green-500",
 }
 export const BGS = [
   "bg-blue-500",

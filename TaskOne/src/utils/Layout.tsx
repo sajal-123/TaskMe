@@ -8,19 +8,21 @@ const Layout: React.FC = () => {
     const { user } = useSelector((state: any) => state.auth);
 
     return (
-        <div className=" w-full h-screen flex flex-col md:flex-row">
-            <div className=" w-1/5 h-screen sticky top-0 hidden md:block">
-                {/* Sidebar */}
-                <SideBar/>
-            </div>
+        <div className="w-full min-h-screen">
+            <MobileSidebar />
+            <div className=" w-full min-h-screen flex flex-col md:flex-row">
+                <div className=" w-1/5 sticky top-0 hidden md:block">
+                    {/* Sidebar */}
+                    <SideBar />
+                </div>
 
-            <MobileSidebar/>
-            <div className=" flex-1 oevrflow-y-hidden bg-gray-400">
+                <div className=" flex-1 oevrflow-y-hidden bg-gray-400">
 
-                {/* Side Navbar */}
-                <Navbar/>
-                <div className="p-4 2xl:px-10 overflow-y-auto">
-                    <Outlet />
+                    {/* Side Navbar */}
+                    <Navbar />
+                    <div className="p-4 2xl:px-10 overflow-y-auto">
+                        <Outlet />
+                    </div>
                 </div>
             </div>
         </div>

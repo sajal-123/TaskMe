@@ -53,7 +53,7 @@ export const summary = {
       title: "Duplicate - Duplicate - Review Code Changes",
       date: "2024-02-09T00:00:00.000Z",
       priority: "medium",
-      stage: "in progress",
+      stage: "in-progress",
       assets: [],
       team: [
         {
@@ -351,7 +351,7 @@ export const summary = {
       title: "Duplicate - Review Code Changes",
       date: "2024-02-07T17:55:13.218Z",
       priority: "medium",
-      stage: "in progress",
+      stage: "in-progress",
       assets: [],
       team: [
         {
@@ -387,7 +387,7 @@ export const summary = {
       _id: "65c3c21f55ae9b2f7666e86c",
       title: "Duplicate - Website Project Proposal",
       date: "2024-02-07T17:46:56.040Z",
-      priority: "normal",
+      priority: "medium",
       stage: "todo",
       assets: [],
       team: [
@@ -438,7 +438,7 @@ export const summary = {
       title: "Review Code Changes",
       date: "2024-02-05T00:00:00.000Z",
       priority: "medium",
-      stage: "in progress",
+      stage: "in-progress",
       assets: [],
       team: [
         {
@@ -565,7 +565,7 @@ export const summary = {
   ],
   tasks: {
     todo: 6,
-    "in progress": 3,
+    "in-progress": 3,
     completed: 1,
   },
 };

@@ -23,7 +23,7 @@ function App() {
             element={
               // <ProtectedRoute>
               // {/* </ProtectedRoute> */}
-                <DashBoard />
+              <DashBoard />
             }
           />
           <Route

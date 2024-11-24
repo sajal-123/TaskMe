@@ -7,6 +7,7 @@ import clsx from 'clsx';
 import Charts from '../components/Charts';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp, MdKeyboardDoubleArrowUp } from 'react-icons/md';
 import TaskTable from '../components/TaskTable';
+import UserTable from '../components/UserTable';
 
 // Define types for stat items
 interface Stat {
@@ -81,7 +82,7 @@ const Card: React.FC<CardProps> = ({ label, total, icon, bg }) => {
 // DashBoard Component
 const DashBoard: React.FC = () => {
   return (
-    <div className='w-full h-screen p-4'>
+    <div className='w-full min-h-screen p-4'>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
         {stats.map((stat) => (
           <Card
@@ -99,12 +100,13 @@ const DashBoard: React.FC = () => {
         </h4>
         <Charts />
       </div>
-      <div className='w-full flex flex-col bg-white md:flex-row gap-4 h-[600px] 2xl:gap-10 py-8'>
+      <div className='w-full grid md:grid-cols-3 gap-4 grid-cols-1'>
         {/* /left */}
 
         <TaskTable tasks={summary.last10Task} />
 
         {/* /right */}
+        <UserTable users={summary.users} />
 
         {/* <UserTable users={summary.users} /> */}
 

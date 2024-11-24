@@ -12,14 +12,14 @@ function Navbar() {
 
 
   return (
-    <div className='w-full gap-2 bg-gray-100 h-16 flex justify-between items-center py-2 px-4 2xl:py-4'>
+    <div className='w-full z-10 gap-2 sticky top-0 left-0 bg-gray-100 h-16 flex justify-between items-center py-2 px-4 2xl:py-4'>
       {/* Search Section */}
       <div className='flex gap-2 items-center'>
         <button className=' md:hidden' onClick={() => {
           dispatch(setOpenSideBar())
           console.log(isSideBarOpen)
         }}>
-          <IoMdMenu />
+          <IoMdMenu size={24} />
 
         </button>
         <div className="rounded-full overflow-hidden w-full border border-gray-300 2xl:w-[300px] bg-white flex items-center gap-2 px-4 py-2">
