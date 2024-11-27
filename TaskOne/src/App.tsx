@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Tasks from './pages/Tasks';
 import Trashed from './pages/Trashed';
 import TaskDetails from './pages/TaskDetails';
+import Users from './pages/Users';
 function App() {
 
   return (
@@ -29,9 +30,9 @@ function App() {
           <Route
             path="/tasks"
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
+              // </ProtectedRoute>
                 <Tasks />
-              </ProtectedRoute>
             }
           />
           <Route
@@ -78,7 +79,7 @@ function App() {
             path="/team"
             element={
               <ProtectedRoute>
-                <TaskDetails />
+                <Users />
               </ProtectedRoute>
             }
           />

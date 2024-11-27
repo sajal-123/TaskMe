@@ -8,7 +8,7 @@ const Layout: React.FC = () => {
     const { user } = useSelector((state: any) => state.auth);
 
     return (
-        <div className="w-full min-h-screen">
+        <div className="w-full">
             <MobileSidebar />
             <div className=" w-full min-h-screen flex flex-col md:flex-row">
                 <div className=" w-1/5 sticky top-0 hidden md:block">

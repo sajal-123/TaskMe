@@ -28,7 +28,7 @@ export const formatDateCustom = (date: Date): string => {
   return `${day}-${month}-${year}`;
 };
 
-export function dateFormatter(dateString: string): string {
+export function dateFormatter(dateString: Date): string {
   const inputDate = new Date(dateString);
   
   // Check if the date is invalid
