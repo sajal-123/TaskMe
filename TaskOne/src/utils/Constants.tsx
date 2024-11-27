@@ -94,6 +94,16 @@ export interface TeamMember {
   email: string;
 }
 
+export interface UserType {
+    _id: string; // Unique identifier for the user, typically an ObjectId
+    name: string; // Name of the user
+    title: string; // Job title
+    role: string; // User role (e.g., Admin, Developer)
+    isActive: boolean; // Whether the user is active or not
+    createdAt: string; // ISO date string representing when the user was created
+  }
+  
+
 export interface SubTask {
   _id: string;
   title: string;
