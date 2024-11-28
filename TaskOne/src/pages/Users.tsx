@@ -6,11 +6,16 @@ import { summary } from "../assets/data";
 import { getInitials } from "../utils";
 import clsx from "clsx";
 import { UserType } from "../utils/Constants";
+import ConfirmationDialog, { UserAction } from "../components/Dialogs";
+import AddUser from "../components/AddUser";
 
 const Users = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState<UserType | null>(null);
+  const [openAction, setOpenAction] = useState<boolean>(false);
+  const userActionHandler = () => { };
+  const deleteHandler = () => { };
 
   const deleteClick = (id: string) => {
     setSelected(id);
@@ -48,7 +53,7 @@ const Users = () => {
         </div>
       </td>
       <td className="p-2">{user.title}</td>
-      <td className="p-2">{user.email || "Email not provided"}</td>
+      <td className="p-2">{user?.email || "Email not provided"}</td>
       <td className="p-2">{user.role}</td>
       <td>
         <button
@@ -97,6 +102,24 @@ const Users = () => {
               ))}
             </tbody>
           </table>
+          <AddUser
+            open={open}
+            setOpen={setOpen}
+            userData={selected}
+            key={new Date().getTime().toString()}
+          />
+
+          <ConfirmationDialog
+            open={openDialog}
+            setOpen={setOpenDialog}
+            onClick={deleteHandler}
+          />
+
+          <UserAction
+            open={openAction}
+            setOpen={setOpenAction}
+            onClick={userActionHandler}
+          />
         </div>
       ) : (
         <p className="text-gray-500 text-center">No users found.</p>
