@@ -6,7 +6,9 @@
     "module": "CommonJS",
     "strict": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "typeRoots": ["./node_modules/@types", "./types"]
   },
   "include": ["src/**/*"], // Compile all files in the src folder
   "exclude": ["node_modules"] // Exclude node_modules from compilation

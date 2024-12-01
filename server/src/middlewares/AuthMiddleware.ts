@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import User from "../models/UserModel";// Corrected the import statement
+import User from "../models/UserModel"; // Corrected import statement
 
-const protectRoute = async (req: Request, res: Response, next: NextFunction) => {
+const protectRoute = async (req: any, res: Response, next: NextFunction) => {
     try {
         let token = req.cookies.token; // Access token from cookies
         if (token) {
@@ -11,7 +11,7 @@ const protectRoute = async (req: Request, res: Response, next: NextFunction) => 
 
             // Fetch user data using the decoded userId
             const user = await User.findById(decodedToken.userId).select("isAdmin email");
-            if (user) {
+            if (user && user.email && req) {
                 req.user = {
                     email: user.email,
                     isAdmin: user.isAdmin,
@@ -30,18 +30,13 @@ const protectRoute = async (req: Request, res: Response, next: NextFunction) => 
     }
 };
 
-// Middleware to check if the user is an admin
-const isAdminRoute = (req: Request, res: Response, next: NextFunction) => {
+
+const isAdminRoute = async (req: any, res: Response, next: NextFunction): Promise<any> => {
     if (req.user && req.user.isAdmin) {
-        next(); // Proceed to the next middleware or route handler
+        return next();  // Proceed to next middleware or handler
     } else {
-        return res.status(401).json({
-            status: false,
-            message: "Not authorized as admin. Try logging in as an admin.",
-        });
+        return res.status(403).json({ message: 'Permission denied.' });
     }
 };
 
-export { isAdminRoute };
-
-export { protectRoute };
+export { protectRoute, isAdminRoute };

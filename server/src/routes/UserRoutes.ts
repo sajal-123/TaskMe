@@ -3,9 +3,10 @@ import {
     // activateUserProfiIe,
     // deleteUserProfi1e,
     registerUser,
-    // LogoutUser,
-    // getTeam,
-    // getNotifications,
+    logoutUser,
+    loginUser,
+    getTeamList,
+    getNotifications,
     // getProfile,
     // readNotification,
     // changePassword
@@ -15,13 +16,13 @@ import { isAdminRoute } from "../middlewares/AuthMiddleware";
 const UserRouter = Router();
 
 // Auth Routes
-// UserRouter.post('/login', LoginUser);
+UserRouter.post('/login', loginUser);
 UserRouter.post('/register', registerUser);
-// UserRouter.post('/logout', LogoutUser);
+UserRouter.post('/logout', logoutUser);
 
 // // User-related Routes
-// UserRouter.get('/get-team', protectRoute, isAdminRoute, getTeam);  // Route for getting team data
-// UserRouter.get('/notifications', protectRoute, getNotifications);  // Route for fetching notifications
+UserRouter.get('/get-team', protectRoute, isAdminRoute, getTeamList);  // Route for getting team data
+UserRouter.get('/notifications', protectRoute, getNotifications);  // Route for fetching notifications
 // UserRouter.get('/profile', protectRoute, getProfile);  // Route for fetching user profile
 // UserRouter.post('/read-notification', protectRoute, readNotification);  // Route for marking a notification as read
 // UserRouter.post('/change-password', protectRoute, changePassword);  // Route for changing password
