@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist", // Compiled files go here
+    "rootDir": "./src", // Source files are here
+    "target": "ES6",
+    "module": "CommonJS",
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*"], // Compile all files in the src folder
+  "exclude": ["node_modules"] // Exclude node_modules from compilation
+}

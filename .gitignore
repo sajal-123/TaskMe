@@ -32,3 +32,5 @@ dist/
 
 # Yarn/PNPM/lock files
 .pnpm-debug.log*
+
+.gitignore

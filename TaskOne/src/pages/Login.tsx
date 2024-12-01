@@ -65,7 +65,7 @@ export default function Login() {
                     {/* Form */}
                     <div className="lg:w-1/2 w-full  rounded-lg p-6">
                         <h2 className="text-2xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 animate-gradient-text">Welcome Back !</h2>
-                        <p className="mb-6">Keep all your credential safe</p>
+                        <p className="mb-6">Keep all npm run devyour credential safe</p>
                         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                             {/* Email Input */}
                             <div>
