@@ -21,7 +21,7 @@ taskRouter.put('/create-subtasks/:id', protectRoute, isAdminRoute, createSubTask
 taskRouter.put('/update/:id', protectRoute, isAdminRoute, updateTask);
 taskRouter.put('/:id', protectRoute, isAdminRoute, trashTask);
 
-
+// For multi Operation Route
 taskRouter.delete('/delete-restore/:id?', protectRoute, isAdminRoute, deleteRestoreTask);
 
 export { taskRouter }
