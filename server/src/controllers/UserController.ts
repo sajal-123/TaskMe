@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
 import User from '../models/UserModel';
 import { createJWT } from '../utils/CreateJWT';
 import { CatchAsyncError } from '../middlewares/CatchAsyncError';

@@ -1,7 +1,7 @@
 import mongoose, { Schema, Document, Types } from 'mongoose';
 
 // Define the types for the subTask and activity elements
-interface IActivity {
+export interface IActivity {
   type: 'assigned' | 'started' | 'in progress' | 'bug' | 'completed' | 'commented';
   activity: string;
   date: Date;

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import {
-    activateUserProfiIe,
-    deleteUserProfi1e,
+    activateUserProfile,
+    deleteUserProfile,
     registerUser,
     logoutUser,
     loginUser,
@@ -27,6 +27,6 @@ UserRouter.get('/profile', protectRoute, UpdateUserProfile);  // Route for fetch
 UserRouter.post('/read-notification', protectRoute, markNotification);  // Route for marking a notification as read
 UserRouter.post('/change-password', protectRoute, changePassword);  // Route for changing password
 UserRouter.route("/:id")
-    .put(protectRoute, isAdminRoute, activateUserProfiIe)
-    .delete(protectRoute, isAdminRoute, deleteUserProfi1e);
+    .put(protectRoute, isAdminRoute, activateUserProfile)
+    .delete(protectRoute, isAdminRoute, deleteUserProfile);
 export { UserRouter };
