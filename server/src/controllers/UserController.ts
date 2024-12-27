@@ -10,37 +10,34 @@ export const registerUser = CatchAsyncError(async (req: Request, res: Response, 
     const { email, password, name, role, title, isAdmin } = req.body;
 
     try {
+        console.log("Request body:", req.body);
+
         // Check if the user already exists
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(400).json({ status: false, message: 'User already exists' });
         }
 
-        // Hash the password before saving it
-        //   const salt = await bcrypt.genSalt(10);
-        //   const hashedPassword = await bcrypt.hash(password, salt);
-
         // Create a new user object
         const newUser = new User({
             email,
-            password: password,
+            password, // Consider hashing before saving (currently commented)
             name,
             role,
             title,
             isActive: true,  // Default value for `isActive`
-            tasks: [], // Empty tasks array for later population
-            isAdmin, // Is admin flag (boolean)
+            tasks: [],       // Empty tasks array for later population
+            isAdmin,         // Is admin flag (boolean)
         });
 
         // Save the user to the database
         await newUser.save();
 
-        // Generate JWT token using the createJwt function
+        // Generate JWT token
         const token = createJWT(res, newUser._id as string);
 
-
-        // Send back the response with token and user info
-        res.status(201).json({
+        // Send back the response
+        return res.status(201).json({
             status: true,
             message: 'User registered successfully',
             token,
@@ -53,10 +50,11 @@ export const registerUser = CatchAsyncError(async (req: Request, res: Response, 
             },
         });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ status: false, message: 'Internal server error' });
+        console.error("Error while registering the user:", error instanceof Error ? error.message : error);
+        return res.status(500).json({ status: false, message: 'Internal server error' });
     }
 });
+
 
 export const loginUser = CatchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
     const { email, password } = req.body;
@@ -195,7 +193,7 @@ export const UpdateUserProfile = CatchAsyncError(
 export const markNotification = CatchAsyncError(
     async (req: Request, res: Response, next: NextFunction) => {
         try {
-            const userId = req.user?.userId; // Ensure `req.user` is properly set by upstream middleware
+            const userId = req.body.user?.userId; // Ensure `req.user` is properly set by upstream middleware
 
             if (!userId) {
                 return res.status(401).json({ status: false, message: "Unauthorized access" });
@@ -240,7 +238,7 @@ export const markNotification = CatchAsyncError(
 export const changePassword = CatchAsyncError(
     async (req: Request, res: Response, next: NextFunction) => {
         try {
-            const { userId } = req.user; // Ensure middleware sets `req.user`
+            const { userId } = req.body.user; // Ensure middleware sets `req.user`
             const { currentPassword, newPassword } = req.body;
 
             // Validate input

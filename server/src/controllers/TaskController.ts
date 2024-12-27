@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
-import Notice from "../models/NotificationModel.js";
-import Task, { IActivity } from "../models/TaskModel.js";
+import Notice from "../models/NotificationModel";
+import Task, { IActivity } from "../models/TaskModel";
 import User from "../models/UserModel";
+import { Types } from 'mongoose';
 
 // Interfaces for request bodies and activity
 interface UserRequest extends Request {
@@ -17,11 +18,11 @@ interface TaskBody {
     assets?: any[];
 }
 
-interface Activity {
-    type: string;
-    activity: IActivity;
-    by: string;
-}
+// interface Activity {
+//     type: string;
+//     activity: IActivity;
+//     by: string;
+// }
 
 // Create a Task
 export const createTask = async (req: UserRequest, res: Response) => {
@@ -98,14 +99,19 @@ export const postTaskActivity = async (req: UserRequest, res: Response) => {
     try {
         const { id } = req.params;
         const { userId } = req.user!;
-        const { type, activity } = req.body as Activity;
+        const { type, activity } = req.body as IActivity;
 
         const task = await Task.findById(id);
         if (!task) {
             throw new Error("Task not found");
         }
 
-        const data = { type, activity, by: userId }
+        const data: IActivity = { 
+            type, 
+            activity, 
+            by: new Types.ObjectId(userId),
+            date: new Date() // Assign a Date object instead of a numeric timestamp
+          };
 
         task.activities.push(data);
         task.save();
