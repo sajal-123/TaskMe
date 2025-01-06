@@ -18,7 +18,7 @@ const UserRouter = Router();
 // Auth Routes
 UserRouter.post('/login', loginUser);
 UserRouter.post('/register', registerUser);
-UserRouter.post('/logout', logoutUser);
+UserRouter.get('/logout', logoutUser);
 
 // // User-related Routes
 UserRouter.get('/get-team', protectRoute, isAdminRoute, getTeamList);  // Route for getting team data

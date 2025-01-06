@@ -19,22 +19,22 @@ app.use(cookieParser()); // Parse cookies
 app.use(morgan('dev')); // Log HTTP requests
 
 // CORS configuration
-// app.use(
-//     cors({
-//         origin: ['http://localhost:3000', 'https://localhost:3001'], // Allowed origins
-//         methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
-//         allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
-//         credentials: true, // Allow cookies or authentication headers
-//     })
-// );
+app.use(
+    cors({
+        origin: ['http://localhost:3000', 'https://localhost:3001'], // Allowed origins
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
+        allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+        credentials: true, // Allow cookies or authentication headers
+    })
+);
 
 // Routes
 app.use('/api', route);
 
 
 
-// app.use(routenotFound); // Route not found middleware
-// app.use(errorHandler); // Global error handler
+app.use(routenotFound); // Route not found middleware
+app.use(errorHandler); // Global error handler
 
 // Connect to the database
 connectToDatabase();

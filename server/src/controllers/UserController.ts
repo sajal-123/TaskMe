@@ -10,7 +10,6 @@ export const registerUser = CatchAsyncError(async (req: Request, res: Response, 
     const { email, password, name, role, title, isAdmin } = req.body;
 
     try {
-        console.log("Request body:", req.body);
 
         // Check if the user already exists
         const existingUser = await User.findOne({ email });
@@ -34,10 +33,15 @@ export const registerUser = CatchAsyncError(async (req: Request, res: Response, 
         await newUser.save();
 
         // Generate JWT token
-        const token = createJWT(res, newUser._id as string);
+        const token = createJWT(newUser._id as string);
 
         // Send back the response
-        return res.status(201).json({
+        return res.cookie('token', token, {
+            httpOnly: true,  // Prevent access to the cookie from JavaScript (helps prevent XSS attacks)
+            secure: process.env.NODE_ENV === 'production', // Only send cookie over HTTPS in production
+            sameSite: 'strict',  // Restrict cookie to same site (helps prevent CSRF attacks)
+            maxAge: 1 * 24 * 60 * 60 * 1000, // Set max age of the cookie (1 day in milliseconds)
+        }).status(201).json({
             status: true,
             message: 'User registered successfully',
             token,
@@ -49,11 +53,22 @@ export const registerUser = CatchAsyncError(async (req: Request, res: Response, 
                 isAdmin: newUser.isAdmin,
             },
         });
-    } catch (error) {
-        console.error("Error while registering the user:", error instanceof Error ? error.message : error);
-        return res.status(500).json({ status: false, message: 'Internal server error' });
+    } catch (err: any) {
+        // console.error("Error while registering the user:", err);
+
+        // Avoid sending a circular structure in error
+        const errorResponse = {
+            message: err.message || "Internal Server Error",
+            stack: process.env.NODE_ENV === "development" ? err.stack : undefined,
+        };
+
+        // Send error response once
+        if (!res.headersSent) {
+            return res.status(500).json(errorResponse);
+        }
     }
 });
+
 
 
 export const loginUser = CatchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
@@ -80,10 +95,15 @@ export const loginUser = CatchAsyncError(async (req: Request, res: Response, nex
         }
 
         // Generate JWT token using the createJwt function
-        const token = createJWT(res, user._id as string);
+        const token = createJWT(user._id as string);
 
         // Send back the response with token and user info
-        res.status(200).json({
+        res.cookie('token', token, {
+            httpOnly: true,  // Prevent access to the cookie from JavaScript (helps prevent XSS attacks)
+            secure: process.env.NODE_ENV === 'production', // Only send cookie over HTTPS in production
+            sameSite: 'strict',  // Restrict cookie to same site (helps prevent CSRF attacks)
+            maxAge: 1 * 24 * 60 * 60 * 1000, // Set max age of the cookie (1 day in milliseconds)
+        }).status(200).json({
             status: true,
             message: 'Login successful',
             token,

@@ -29,6 +29,7 @@ export const createTask = async (req: UserRequest, res: Response) => {
     try {
         const { userId } = req.user!;
         const { title, team, stage, date, priority, assets } = req.body as TaskBody;
+        // console.log(req.body)
 
         const task = await Task.create({
             title,
