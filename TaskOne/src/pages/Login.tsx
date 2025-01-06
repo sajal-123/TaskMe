@@ -51,7 +51,7 @@ export default function Login() {
         <div className="min-h-screen bg-gray-100 text-gray-900 w-full flex justify-center items-center">
             <div className=" flex flex-col shadow-lg rounded-lg overflow-hidden lg:w-[50%] h-[100%] bg-white">
                 <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r p-2 from-blue-500 to-purple-600 animate-gradient-text">
-                    Cloud Manage task
+                    Cloud Manage task App
                 </h1>
                 <div className="flex lg:flex-row flex-col w-full h-[100%] bg-white items-center">
                     {/* Animated Banner */}
