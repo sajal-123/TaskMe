@@ -8,14 +8,13 @@ const baseQuery = fetchBaseQuery({ baseUrl: API_URL+"/api" });
 
 // Create an API slice using createApi
 export const apiSlice = createApi({
-  reducerPath: 'api', // This will be the key for the API slice reducer
-  baseQuery, // Pass the base query to the slice
-  tagTypes: ['Posts'], // Define the types of tags for caching and refetching
+  reducerPath: 'api', 
+  baseQuery, 
+  tagTypes: ['Posts'], 
   endpoints: (builder) => ({
-    // Define an endpoint to fetch data
     getPosts: builder.query({
-      query: () => '/posts', // Endpoint path
-      providesTags: ['Posts'], // The tags that this query provides
+      query: () => '/posts', 
+      providesTags: ['Posts'], 
     })
   }),
 });

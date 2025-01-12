@@ -22,17 +22,17 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              // <ProtectedRoute>
-              // {/* </ProtectedRoute> */}
-              <DashBoard />
+              <ProtectedRoute>
+                <DashBoard />
+              </ProtectedRoute>
             }
           />
           <Route
             path="/tasks"
             element={
-              // <ProtectedRoute>
-              // </ProtectedRoute>
+              <ProtectedRoute>
                 <Tasks />
+              </ProtectedRoute>
             }
           />
           <Route

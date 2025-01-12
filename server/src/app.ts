@@ -21,7 +21,7 @@ app.use(morgan('dev')); // Log HTTP requests
 // CORS configuration
 app.use(
     cors({
-        origin: ['http://localhost:3000', 'https://localhost:3001'], // Allowed origins
+        origin: ['http://localhost:5173', 'https://localhost:5174'], // Allowed origins
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
         allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
         credentials: true, // Allow cookies or authentication headers

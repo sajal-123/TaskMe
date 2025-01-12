@@ -4,6 +4,8 @@ import banner from '../assets/banner.png';
 import './style.css'
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useLoginMutation } from "../redux/Slices/api/authApiSlice";
+import { toast } from "sonner";
 
 
 type LoginInputs = {
@@ -22,9 +24,10 @@ export default function Login() {
         formState: { errors },
         reset
     } = useForm<LoginInputs>();
+    const [login, { isLoading }] = useLoginMutation();
 
     useEffect(() => {
-        console.log(user)
+        console.log("useEffect user -> ",user)
         if (user) {
             setRedirect(true);
         }
@@ -32,13 +35,16 @@ export default function Login() {
 
     const onSubmit: SubmitHandler<LoginInputs> = (data) => {
         setLoading(true); // Set loading to true when submitting
-        console.log("Login Data:", data);
+        try {
+            const result = login(data);
+            console.log("result->",result)
+        } catch (error: any) {
+            console.log("error->",error.message)
+            toast.error(error.message || error?.data?.message) 
 
-        // Simulate a delay (e.g., API call)
-        setTimeout(() => {
-            setLoading(false); // Set loading to false after the "API call"
-            reset()
-        }, 2000); // Simulate a 2-second delay
+        }finally {
+            setLoading(false); // Set loading to false when the mutation is completed
+        }
     };
 
     // Conditional rendering to redirect user to dashboard

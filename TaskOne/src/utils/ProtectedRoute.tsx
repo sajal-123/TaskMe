@@ -2,7 +2,7 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 
 const isAuthenticated = (): boolean => {
-  return localStorage.getItem("authToken") === null;
+  return localStorage.getItem("authToken") !== null;
 };
 
 interface ProtectedRouteProps {
